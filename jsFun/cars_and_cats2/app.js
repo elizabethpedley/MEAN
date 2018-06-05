@@ -16,6 +16,22 @@ app.get('/cats', function(request, response) {
 app.get('/new', function(request, response) {
     response.render('new');
 });
+app.get('/cats/0', function(request, response) {
+    var cat = {
+        name: 'Missy',
+        age: 6,
+        favoriteSpots: ['boxes','outside', 'top of cabinets']
+    }
+    response.render('single', {cat: cat});
+});
+app.get('/cats/1', function(request, response) {
+    var cat = {
+        name: 'Josie',
+        age: 2,
+        favoriteSpots: ['boxes','outside', 'top of cabinets']
+    }
+    response.render('single', {cat: cat});
+});
 
 // tell your server which port to run on
 app.listen(8000, function() {
