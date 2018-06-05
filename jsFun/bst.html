@@ -1,0 +1,66 @@
+<script>
+    function BST(){
+    this.root = null;    // the root attribute will be assigned to a node later
+    this.insert = function(val){
+        if(this.root == null){
+            this.root = new Node(val);
+        }else{
+            var current = this.root;
+            while(true){
+                if(val > current.value){
+                    if(current.right){
+                        current = current.right;
+                    }else{
+                        current.right = new Node(val);
+                        break;
+                    }
+                }else{
+                    if(current.left){
+                        current = current.left;
+                    }else{
+                        current.left = new Node(val);
+                        break;
+                    }
+                }
+            }
+        }
+        console.log(this);
+        return this;
+    };
+    }
+    function Node(val){
+        this.value = val;   // the value attribute will be assigned based on user input when a node is instantiated
+        this.left = null;   // the left attribute will be assigned to a node later
+        this.right = null;  // the right attribute will be assigned to a node later
+    }
+    // BST.prototype.insert = function(val){
+    //     if(this.root == null){
+    //         this.root = new Node(val);
+    //     }else{
+    //         var current = this.root;
+    //         while(true){
+    //             if(val > current.value){
+    //                 if(current.right){
+    //                     current = current.right;
+    //                 }else{
+    //                     current.right = new Node(val);
+    //                     break;
+    //                 }
+    //             }else{
+    //                 if(current.left){
+    //                     current = current.left;
+    //                 }else{
+    //                     current.left = new Node(val);
+    //                     break;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     console.log(this);
+    //     return this;
+    // };
+
+
+    var first = new BST();
+    first.insert(50).insert(40).insert(25).insert(60)
+</script>

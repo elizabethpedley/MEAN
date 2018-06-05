@@ -1,0 +1,48 @@
+<script>
+    function validBrackets(string){
+        var opening;
+        for(var i = 0; i < string.length; i++){
+            opening = [null,null];
+            for(var j=0; j<string.length; j++){
+                switch(opening[0]){
+                    case null:{switch(string[j]){
+                        case "{":{opening = ["{",j]; break;} 
+                        case "[":{opening = ["[",j]; break;} 
+                        case "(":{opening = ["(",j]; break;} 
+                    }; break;}
+                    case '{':{switch(string[j]){
+                        case "{":{opening = ["{",j]; break;} 
+                        case "[":{opening = ["[",j]; break;} 
+                        case "(":{opening = ["(",j]; break;} 
+                        case "}":{num = opening[1]; opening = ['finished', 'finished']; string = string.slice(0,num) + string.slice(num+1,j) + string.slice(j+1, string.length); break;}
+                        case "]":{return false}
+                        case ")":{return false}
+                    }; break;} 
+                    case '[':{switch(string[j]){
+                        case "{":{opening = ["{",j]; break;} 
+                        case "[":{opening = ["[",j]; break;} 
+                        case "(":{opening = ["(",j]; break;} 
+                        case "]":{num = opening[1]; opening = ['finished', 'finished']; string = string.slice(0,num) + string.slice(num+1,j) + string.slice(j+1, string.length); break;}
+                        case "}":{return false}
+                        case ")":{return false}
+                    }; break;}
+                    case '(':{switch(string[j]){
+                        case "{":{opening = ["{",j]; break;} 
+                        case "[":{opening = ["[",j]; break;} 
+                        case "(":{opening = ["(",j]; break;} 
+                        case ")":{ num = opening[1];opening = ['finished', 'finished']; string = string.slice(0,j) + string.slice(j+1, string.length);string = string.slice(0,num) + string.slice(num+1, string.length); break;}
+                        case "}":{return false}
+                        case "]":{return false}
+                    }; break;}   
+                }
+                if(opening[0] == 'finished'){
+                    break;
+                }
+                if(opening[0] == null && j == string.length-1){
+                    return true;
+                }
+            }
+        }
+        return true;
+    }
+</script>
