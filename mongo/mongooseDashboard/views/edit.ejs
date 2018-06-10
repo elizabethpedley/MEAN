@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit <%= animal.name %></h1>
+    <% if(messages.registration) { %>
+        <% for (var x of messages.registration) { %>
+            <h3><%= x %></h3>
+        <% } %>
+    <% } %>
+    <form action="/animal/<%= animal.id%>" method="Post">
+        Name: <input type="text" name="name" placeholder="<%= animal.name%>">
+        Age: <input type="number" name="age" placeholder="<%= animal.age%>">
+        Species: <input type="text" name="species" placeholder="<%= animal.species%>">
+        <input type="submit">
+    </form>
+</body>
+</html>
