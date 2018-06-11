@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Dojo Message Board</h1>
+    <hr>
+    <form action="/new" method="Post">
+        Name: <input type="text" name="name">
+        Message: <input type="text" name="post">
+        <input type="submit">
+    </form>
+    <% for(var i=0; i<posts.length; i++){%>
+        <h3>Name: <%= posts[i].name%> </h3>
+        <h3>Message: <%= posts[i].post%> </h3>
+        <% for(var j=0;j<posts[i].comments.length;j++){ %>
+            <h5>Name: <%=posts[i].comments[j].name %></h5>
+            <h5>Comment: <%=posts[i].comments[j].comment %></h5>
+        <%}%>
+        <form action="/new/<%= posts[i].id%>" method="Post">
+            Name: <input type="text" name="name">
+            Comment: <input type="text" name="comment">
+            <input type="submit">
+        </form>
+    <%}%>
+</body>
+</html>
