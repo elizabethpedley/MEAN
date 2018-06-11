@@ -5,10 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-    <% for(var quote in quotes)%>
+    <% for(var quote in quotes){%>
     <div>
         <h1><%= quotes[quote].quote %></h1>
         <h3><%= quotes[quote].name %></h3>
     </div>
+    <%}%>
 </body>
 </html>

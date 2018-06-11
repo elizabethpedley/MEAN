@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 const flash = require('express-flash');
+require('./server/models/quotes.js')
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,13 +21,6 @@ app.use(session({
   }))
 mongoose.connect('mongodb://localhost/qDojo');
 
-var QuoteSchema = new mongoose.Schema({
-    name: {type: String, required: true, minlength: 2},
-    quote: {type: String, required: true, minlength: 5}
-   })
-   // Store the Schema under the name 'User'
-mongoose.model('Quote', QuoteSchema);
-var Quote = mongoose.model('Quote')
 
 // setting up ejs and our views folder
 app.set('views', path.join(__dirname, './views'));

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose'),
-      Quote = mongoose.model('Quote'),
-      quotes = require('../controllers/quotes.js');
+// const mongoose = require('mongoose'),
+//       Quote = mongoose.model('Quote'),
+const quotes = require('../controllers/quotes.js');
 
 module.exports = function(app){
 
