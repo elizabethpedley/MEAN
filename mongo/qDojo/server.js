@@ -4,13 +4,11 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 const flash = require('express-flash');
-require('./server/models/quotes.js')
+require('./server/config/mongoose.js');
+// require('./server/models/quotes.js');
 var app = express();
-
 app.use(bodyParser.urlencoded({ extended: true }));
-
 const server = app.listen(1337);
-const io = require('socket.io')(server);
 app.use(flash());
 app.use(express.static(path.join(__dirname, "./static")));
 app.use(session({
@@ -19,11 +17,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
   }))
-mongoose.connect('mongodb://localhost/qDojo');
-
-
-// setting up ejs and our views folder
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
-// root route to render the index.ejs view
 require('./server/config/routes.js')(app)
