@@ -10,11 +10,9 @@ export class HttpService {
   
   }
   getTasks(){
-    let tempObservable = this._http.get('/tasks');
-    tempObservable.subscribe(data => console.log("Got our tasks!", data));
+    return this._http.get('/tasks');
  }
   getTask(id: string){
-    let tempObservable = this._http.get('/tasks/'+ id);
-    tempObservable.subscribe(data => console.log("Got our task!", data));
+    return this._http.get('/tasks/'+ id);
   }
 }
