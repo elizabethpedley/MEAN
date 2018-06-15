@@ -22,11 +22,11 @@ module.exports = {
     },
     new: function(req,res){
         var task = new Task({title: req.body.title, description: req.body.description, completed: req.body.completed});
-        task.save(function(err) {
+        task.save(function(err,task) {
             if(err) {
                 res.json({err: true, error: err })
             } else {
-                res.json({err: false})
+                res.json({err: false, task:task})
             }
           })
     },
