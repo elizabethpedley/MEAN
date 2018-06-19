@@ -1,0 +1,14 @@
+<a [routerLink]="['/']">Home</a>
+<p>Add a new author:</p>
+<form (submit)="onSubmit()" name="myForm" #myForm='ngForm' >
+  <div *ngIf="!name.valild && (name.dirty || name.touched)">
+    <p *ngIf="name.errors?.required">Your name is required</p>
+    <p *ngIf="name.errors?.minlength">Name feild must be at least 2 characters long</p>
+    <p *ngIf="name.errors?.maxlength">Name feild must be no more than 14 characters long</p>
+  </div>
+  <br>
+  Name: <br>
+  <input type="text" name="name" [(ngModel)]="newAuthor.name" required minlength="2" maxlength="14" #name="ngModel">
+  <br>
+  <input type="submit" [disabled]="!myForm.valid">
+</form>
